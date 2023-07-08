@@ -1,0 +1,114 @@
+/* ================================= 
+  Base Element Styles
+==================================== */
+body {
+	font-family:"Times New Roman", Times, serif;
+	line-height: 1;
+	color: #3a3a3a;
+	margin: 0;
+}
+
+/* ================================= 
+  Base Layout Styles
+==================================== */
+
+/* ---- header ---- */
+
+.main-header,
+.main-nav {
+    display:flex;
+    flex-direction:row;
+}
+
+.main-header{
+    padding:0.5em;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgb(238, 238, 238);
+}
+
+.name{
+    margin-left:2em;
+    font-size:1em; /*為什麼非得寫在name中才不跑版? */
+}
+
+.main-nav{
+    display:flex;
+    justify-content:space-between;
+    margin-right:4em;
+    text-align:center;
+    
+}    
+
+.I{
+    margin-left:4em;
+    font-size:1em;
+    color:black;
+    font-weight:bold;
+}
+/* ---- section ---- */
+.welcome-message {
+    display:block;
+    height:3em;
+    padding:2.5em 0;
+    text-align:center;
+    background-color:rgb(204, 221, 238);
+    font-size:1.5em;
+    font-weight: bold;
+}
+
+/* ---- main content ---- */
+
+.main-content{
+   margin: 1em auto;
+}
+.section-title {
+    display:block;
+    padding:0 0.5em;
+    text-align:center;
+    font-size:1.3em;
+    font-weight: bold;
+}
+.content-grid {
+    display: flex;
+    gap: 1.2em 1.2em;
+    max-width: 1200px; 
+    margin:1.2em auto; 
+}
+
+.content-grid-2 {
+    display: none;
+    gap: 1.2em 1.2em;
+    max-width: 1200px; 
+    margin:1.2em auto; 
+}
+.box{
+    flex:1;
+    height:150px;
+    text-align:center;
+    padding-top:0.1em;
+    background-color:rgb(136, 153, 170);
+    font-size:1em;
+    font-weight: bold;
+}
+
+.button{
+    width: 100px;
+    height: 45px;
+    padding: 0.5em 1em;
+    margin:1.5em auto;
+    background-color:rgb(221, 238, 255);
+    text-align:center;
+    font-size:1em;
+    font-weight: bold;
+}
+
+
+/* ================================= 
+  Media Queries
+==================================== */
+@media (min-width: 1200px) {
+    .content-grid {
+        max-width: 1200px;
+    }
+}
