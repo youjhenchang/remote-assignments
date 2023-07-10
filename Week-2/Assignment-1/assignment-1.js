@@ -3,14 +3,20 @@
 // position should be counted starting from 0, if you can't find the target, please return -1
 // Reminder: you cannot use those built-in functions like Math.max() and
 // Array.prototype.findIndex() to complete this assignment, please implement it by yourself.
-function max(numbers) {
-    let max= numbers[0];
-    for(let i=0;i<numbers.length;i++){
-        if (numbers[i]>max){
-            max = numbers[i] ; 
-        }}
-    return max;
+function max(numbers){
+    if (numbers.length == 0){
+        throw "array is empty";
+    }else{
+        let max = numbers[0];
+        for (let i of numbers){
+            if (i > max){
+                max = i;
+            }
+        }
+        return max;   
+    } 
 }
+
 function findPosition(numbers, target) {
     for (let i=0; i<numbers.length ;i++){
         if (target == numbers[i]) {
