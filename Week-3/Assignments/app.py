@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template, make_response
+from flask import (Flask, request, render_template,
+                   make_response, redirect, url_for)
 app = Flask(__name__)
 
 
@@ -26,37 +27,29 @@ def sum_page():
 
 
 @app.route("/myName")
-def name():
+def myName():
     userName = request.cookies.get('userID')
     if userName is None:
-        return set_cookie_html()
+        return render_template("setcookie.html")
     else:
-        return get_cookie_html()
+        return f"<h1>{userName}</h1>"
 
 
-@app.route("/setcookie.html")
-def set_cookie_html():
-    return render_template("setcookie.html")
-
-
-@app.route("/setcookie", methods=['POST'])
-def setcookie():
-    if request.method == 'POST':
-        user = request.form['nm']
-        resp = make_response(render_template('getcookie.html'))
-        resp.set_cookie('userID', user)
+@app.route("/clearCookie")
+def clear_cookie():
+    resp = make_response("<h1>success</h1>")
+    resp.set_cookie('userID', '', expires=0)
     return resp
 
 
-@app.route("/getcookie.html", methods=['GET'])
-def get_cookie_html():
-    return render_template('getcookie.html')
-
-
-@app.route("/getcookie", methods=['GET'])
-def getcookie():
-    userName = request.cookies.get('userID')
-    return f"<h1>{userName}</h1>"
+@app.route("/trackName", methods=['GET', 'POST'])
+def track_name():
+    user_name = request.args.get('name')
+    print(user_name)
+    if user_name:
+        resp = make_response(redirect(url_for('myName')))
+        resp.set_cookie('userID', user_name)
+        return resp
 
 
 if __name__ == '__main__':

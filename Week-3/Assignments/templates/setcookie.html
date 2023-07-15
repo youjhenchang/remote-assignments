@@ -6,10 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    <form action = "/setcookie" method = "POST">
+    <!-- <form action = "/setcookie" method = "POST">
         <p><h3>Enter userID</h3></p>
         <p><input type = 'text' name = 'nm'/></p>
         <p><input type = 'submit' value = 'Login'/></p>
-     </form>
+     </form> -->
+
+     <div id="set_user_name">
+         <input type="text" id="user_name" name="" value="your name">
+         <button type="button" onclick="set_cookie()">Set User Name</button>    
+     </div>
+     <script>
+        function set_cookie() {
+            var xhttp = new XMLHttpRequest();
+            var user_name = document.getElementById('user_name').value;
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    location.reload()
+                }
+            };
+            xhttp.open("POST", `trackName?name=${user_name}`, true);
+            xhttp.send();
+        }
+     </script>
 </body>
 </html>

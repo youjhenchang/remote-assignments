@@ -21,7 +21,7 @@
                 }
             };
             var num = document.getElementById('input').value;
-            xhttp.open("GET", `data?number=${num}`, true);
+            xhttp.open("POST", `data?number=${num}`, true);
             xhttp.send();
         }
     </script>
