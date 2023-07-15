@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
@@ -18,6 +18,11 @@ def data():
         number = int(number)
         result = sum(range(1, number + 1))
         return f'<h1>Result: {result}</h1>'
+
+
+@app.route("/sum.html")
+def sum_page():
+    return render_template("sum.html")
 
 
 if __name__ == '__main__':
