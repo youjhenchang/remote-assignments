@@ -19,6 +19,11 @@ def index():
     return '<h1>Hello, My Server!</h1>'
 
 
+@app.route("/home.html")
+def home():
+    return render_template("home.html")
+
+
 @app.route("/homepage")
 def homepage():
     return render_template('homepage.html')
