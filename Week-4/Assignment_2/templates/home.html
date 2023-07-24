@@ -16,9 +16,6 @@
     </ul>
 </body>
 <script>
-    //Complete the functions below to make AJAX call to a URL by GET method and show the 
-    //response data in the page. 
-    //You may render UI with any style.
 
     function ajax(src, callback)
     {
@@ -28,7 +25,7 @@
             if(xhttp.readyState === 4 && xhttp.status ===200)
             {
                 console.log(xhttp.responseText);
-                const response= /*JSON.parse(*/xhttp.responseText;//);
+                const response= xhttp.responseText;
                 callback(response);
             };
         }
@@ -36,7 +33,6 @@
         xhttp.send();
     }
 
-    //這裡要呈現的是什麼內容? 把這裡的內容跟response結合
     function render(data)
     {
         const productInfo = document.createElement("li");
@@ -52,7 +48,6 @@
             function(response){
                 render(response);
             }); 
-            // you should get product information in JSON format and render data in the page
     }
 </script>
 </html>
