@@ -1,6 +1,9 @@
 from flask import (Flask, request, render_template,
                    make_response, redirect, url_for)
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/")
@@ -53,4 +56,4 @@ def track_name():
 
 
 if __name__ == '__main__':
-    app.run(port=3000)
+    app.run(port=3000, debug=True)

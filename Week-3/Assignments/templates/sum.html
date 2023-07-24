@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Accumulation from 1 to N</title>
 </head>
 <body>
-    <div id="input_num">
-        <input type="number" id="input" name="" value="10">
-        <button type="button" onclick="get_sum()">Get Sum</button>    
+    <form method="GET" id=input_num>
+        <label for="input">Enter a Number: </label>
+        <input type="number" id="input" name="number" value="10" required>
+        <button type="button" onclick="get_sum()">Get Sum</button>
+    </form>
+
+    <div>
+        <p id="result"></p>
     </div>
-    
+
+
     <script>
         function get_sum() {
+            var num = document.getElementById('input').value;  
             var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", `http://localhost:3000/data?number=${num}`, true); 
+            //這裡為什麼直接寫absolute path就會出現CORS issue，而relative path不會??(雖然後來在server import CORS 而解決)
             xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText)
-                    document.getElementById("input_num").innerHTML = this.responseText;
+                    document.getElementById("result").innerHTML = this.responseText;
                 }
             };
-            var num = document.getElementById('input').value;
-            xhttp.open("POST", `data?number=${num}`, true);
             xhttp.send();
         }
     </script>
